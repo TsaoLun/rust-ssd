@@ -83,4 +83,7 @@ pub struct SubCommandTrain {
     #[argh(option)]
     /// checkpoint number to start training from default None
     pub c: Option<usize>,
+    #[argh(option)]
+    /// training configuration file path (default: ./config/training_config.json)
+    pub config: Option<String>,
 }

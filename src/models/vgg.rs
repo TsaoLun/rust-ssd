@@ -483,7 +483,7 @@ mod tests {
 
     #[test]
     fn vgg_model_test() {
-        let device = burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = burn::backend::libtorch::LibTorchDevice::Mps;
         type B = burn::backend::LibTorch;
 
         B::seed(42);
@@ -497,7 +497,7 @@ mod tests {
 
     #[test]
     fn vgg_model_forward_test() {
-        let device = burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = burn::backend::libtorch::LibTorchDevice::Mps;
         type B = burn::backend::LibTorch;
 
         B::seed(42);
@@ -513,7 +513,7 @@ mod tests {
 
     #[test]
     fn vgg_model_inference_test() {
-        let device = burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = burn::backend::libtorch::LibTorchDevice::Mps;
         type B = burn::backend::LibTorch;
 
         B::seed(42);

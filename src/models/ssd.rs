@@ -315,7 +315,7 @@ mod tests {
 
     #[test]
     fn ssd_model_test() {
-        let device = burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = burn::backend::libtorch::LibTorchDevice::Mps;
         type B = burn::backend::LibTorch;
         let ssd_model: SSD<B> = SSD::new(&device, None, 21);
         println!("{}", ssd_model);
@@ -323,7 +323,7 @@ mod tests {
 
     #[test]
     fn ssd_model_forward_test() {
-        let device = burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = burn::backend::libtorch::LibTorchDevice::Mps;
         type B = burn::backend::LibTorch;
         let ssd_model: SSD<B> = SSD::new(&device, None, 21);
         let t = Tensor::<B, 4>::ones([1, 3, 300, 300], &device);
@@ -334,7 +334,7 @@ mod tests {
     fn ssd_model_backwards_test_w_weights() {
         type B = burn::backend::LibTorch;
         type ADB = Autodiff<B>;
-        let device = &burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = &burn::backend::libtorch::LibTorchDevice::Mps;
         let ssd_model: models::ssd::SSD<ADB> = SSD::new(device, None, 21);
         let t = Tensor::ones([1, 3, 300, 300], device);
         let (a, b, c) = ssd_model.forward(t);

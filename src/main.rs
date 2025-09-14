@@ -8,7 +8,7 @@ use rust_ssd::{
 
 fn main() {
     type AutoDiffBackend = Autodiff<LibTorch>;
-    let device = burn::backend::libtorch::LibTorchDevice::Cuda(0);
+    let device = burn::backend::libtorch::LibTorchDevice::Mps;
 
     let cli_cmd: SSDCmd = argh::from_env();
     let coco_remap = SSDRemapCOCOID::new(cli_cmd.o.split(',').collect());
@@ -32,7 +32,8 @@ fn main() {
         Commands::Train(sub_command_train) => {
             let checkpoint = sub_command_train.c.unwrap_or(0);
             let coco_root = sub_command_train.r;
-            let config = TrainingConfig::load("./config/training_config.json").unwrap();
+            let config_path = sub_command_train.config.unwrap_or_else(|| "./config/training_config.json".to_string());
+            let config = TrainingConfig::load(&config_path).unwrap();
             training::train::<AutoDiffBackend>(config, &device, &coco_remap, checkpoint, coco_root);
         }
     };

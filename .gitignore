@@ -1,5 +1,10 @@
 /target
 /assets/pretrained_models/
+/assets/datasets/
+/assets/filtered_datasets/
+/assets/small_datasets/
+/assets/balanced_datasets/
+/assets/bicycle_datasets/
 /artifacts/log.txt
 /.vscode
 /Cargo.lock

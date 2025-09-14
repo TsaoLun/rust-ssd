@@ -17,5 +17,7 @@ pub mod config;
 pub mod stats;
 pub mod transforms;
 pub mod torch_ops;
+pub mod weighted_loss;
+pub mod focal_loss;
 
 

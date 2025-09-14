@@ -279,7 +279,7 @@ mod tests {
     fn test_loss() {
         let batches = 2;
         type B = Autodiff<burn::backend::LibTorch>;
-        let device = &burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = &burn::backend::libtorch::LibTorchDevice::Mps;
 
         B::seed(42);
 
@@ -337,7 +337,7 @@ mod tests {
     #[test]
     fn test_loss_single() {
         type B = Autodiff<burn::backend::LibTorch>;
-        let device = &burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = &burn::backend::libtorch::LibTorchDevice::Mps;
 
         let batches = 2;
 
@@ -389,7 +389,7 @@ mod tests {
     #[test]
     fn test_box_regression() {
         type B = Autodiff<burn::backend::LibTorch>;
-        let device = &burn::backend::libtorch::LibTorchDevice::Cuda(0);
+        let device = &burn::backend::libtorch::LibTorchDevice::Mps;
         type FT = FloatElem<B>;
 
         let gt_boxes = Tensor::<B, 2>::from_data(
